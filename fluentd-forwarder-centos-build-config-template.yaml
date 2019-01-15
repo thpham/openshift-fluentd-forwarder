@@ -18,10 +18,10 @@ objects:
     tags:
       - name: latest
         annotations:
-          openshift.io/imported-from: docker.io/centos/7
+          openshift.io/imported-from: docker.io/centos:7
         from:
           kind: DockerImage
-          name: docker.io/centos/7
+          name: docker.io/centos:7
         referencePolicy:
           type: Source
 - apiVersion: v1
