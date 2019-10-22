@@ -156,11 +156,12 @@ oc apply -f fluentd-forwarder-template.yaml
 Create the new rsyslog logging forwarder application deployment:
 ```bash
 oc project logging
-oc new-app fluentd-forwarder \
+oc process fluentd-forwarder \
    -p "P_TARGET_TYPE=remote_syslog" \
    -p "P_TARGET_HOST=rsyslog.internal.company.com" \
    -p "P_TARGET_PORT=514" \
-   -p "P_SHARED_KEY=changeme"
+   -p "P_SHARED_KEY=changeme" \
+   | oc create -f -
 ```
 
 ##### RHEL splunkex
@@ -173,7 +174,8 @@ oc process -f fluentd-forwarder-template.yaml \
    -p "P_TARGET_HOST=10.10.10.10" \
    -p "P_TARGET_PORT=9997" \
    -p "P_SHARED_KEY=changeme" \
-   -p "P_ADDITIONAL_OPTS=output_format json"
+   -p "P_ADDITIONAL_OPTS=output_format json" \
+   | oc create -f -
 ```
 
 ##### RHEL splunkhec
@@ -181,12 +183,13 @@ oc process -f fluentd-forwarder-template.yaml \
 To create the new splunkhec logging forwarder application deployment:
 ```bash
 oc project logging
-oc new-app fluentd-forwarder \
+oc process fluentd-forwarder \
    -p P_TARGET_TYPE="splunkhec" \
    -p P_TARGET_HOST="examplehec.example.com" \
    -p P_TARGET_PORT="8088" \
    -p P_SHARED_KEY="changeme" \
-   -p P_ADDITIONAL_OPTS="token <token_value>"
+   -p P_ADDITIONAL_OPTS="token <token_value>" \
+   | oc create -f -
 ```
 
 #### CentOS
@@ -196,12 +199,13 @@ oc new-app fluentd-forwarder \
 To do the same for CentOS you need to reference the ImageStream created by that build.
 ```bash
 oc project logging
-oc new-app fluentd-forwarder \
+oc process fluentd-forwarder \
    -p "P_IMAGE_NAME=fluentd-forwarder-centos" \
    -p "P_TARGET_TYPE=remote_syslog" \
    -p "P_TARGET_HOST=rsyslog.internal.company.com" \
    -p "P_TARGET_PORT=514" \
-   -p "P_SHARED_KEY=changeme"
+   -p "P_SHARED_KEY=changeme" \
+   | oc create -f -
 ```
 
 ##### CentOS splunkex
@@ -215,7 +219,8 @@ oc process -f fluentd-forwarder-template.yaml \
    -p "P_TARGET_HOST=10.10.10.10" \
    -p "P_TARGET_PORT=9997" \
    -p "P_SHARED_KEY=changeme" \
-   -p "P_ADDITIONAL_OPTS=output_format json"
+   -p "P_ADDITIONAL_OPTS=output_format json" \
+   | oc create -f -
 ```
 
 ##### CentOS splunkhec
@@ -223,13 +228,14 @@ oc process -f fluentd-forwarder-template.yaml \
 To create the new splunkhec logging forwarder application deployment:
 ```bash
 oc project logging
-oc new-app fluentd-forwarder \
+oc process fluentd-forwarder \
    -p "P_IMAGE_NAME=fluentd-forwarder-centos" \
    -p P_TARGET_TYPE="splunkhec" \
    -p P_TARGET_HOST="examplehec.example.com" \
    -p P_TARGET_PORT="8088" \
    -p P_SHARED_KEY="changeme" \
-   -p P_ADDITIONAL_OPTS="token <token_value>"
+   -p P_ADDITIONAL_OPTS="token <token_value>" \
+   | oc create -f -
 ```
 
 
