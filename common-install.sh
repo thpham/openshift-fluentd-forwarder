@@ -13,7 +13,7 @@ YUM_ARGS="--setopt=tsflags=nodocs"
 PACKAGES="gem gcc-c++ libcurl-devel make bc gettext nss_wrapper hostname iproute"
 
 # ruby packages
-PACKAGES="${PACKAGES} rh-ruby22 rh-ruby22-rubygems rh-ruby22-ruby-devel"
+PACKAGES="${PACKAGES} rh-ruby24 rh-ruby24-rubygems rh-ruby24-ruby-devel"
 
 # if the release is a red hat version then we need to set additional arguments for yum repositories
 RED_HAT_MATCH='^Red Hat.*$'
