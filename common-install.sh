@@ -10,7 +10,7 @@ YUM_ARGS="--setopt=tsflags=nodocs"
 # - iproute needed for ip command to get ip addresses	+ADD run.sh fluentd.conf.template passwd.template fluentd-check.sh ${HOME}/
 # - nss_wrapper used to support username identity	+ADD common-*.sh /tmp/
 # - bc for calculations in run.conf
-PACKAGES="gem gcc-c++ libcurl-devel make bc gettext nss_wrapper hostname iproute"
+PACKAGES="gem gcc gcc-c++ libcurl-devel make bc gettext nss_wrapper hostname iproute"
 
 # ruby packages
 PACKAGES="${PACKAGES} rh-ruby24 rh-ruby24-rubygems rh-ruby24-ruby-devel"
