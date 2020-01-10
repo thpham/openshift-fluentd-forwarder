@@ -1,5 +1,5 @@
 # start based on a centos image
-FROM rhel7
+FROM registry.access.redhat.com/rhscl/ruby-24-rhel7
 
 ENV HOME=/opt/app-root/src \
   PATH=/opt/rh/rh-ruby22/root/usr/bin:/opt/app-root/src/bin:/opt/app-root/bin${PATH:+:${PATH}} \
