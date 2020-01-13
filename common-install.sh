@@ -23,8 +23,10 @@ if [[ $RELEASE =~ $RED_HAT_MATCH && -z "$USE_SYSTEM_REPOS" ]]; then
   yum repolist --disablerepo=* && yum-config-manager --disable \* > /dev/null
   #Set YUM_ARGS
   if [[ $RELEASE == *"Workstation"* ]]; then
+    echo "Using Workstation Packages"
     YUM_ARGS="${YUM_ARGS} --enablerepo=rhel-7-workstation-rpms --enablerepo=rhel-workstation-rhscl-7-rpms --enablerepo=rhel-7-workstation-optional-rpms"
   else
+    echo "Using Server Packages"
     YUM_ARGS="${YUM_ARGS} --enablerepo=rhel-7-server-rpms --enablerepo=rhel-server-rhscl-7-rpms --enablerepo=rhel-7-server-optional-rpms"
   fi
 fi
