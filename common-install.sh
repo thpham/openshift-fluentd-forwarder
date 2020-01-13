@@ -16,7 +16,7 @@ mkdir -p ${HOME} && \
 # update to fluentd version that matches version deployed
 # into openshift
 gem install -N --conservative --minimal-deps --no-document \
-  'fluentd:1.4' \
+  'fluentd:~>1.4' \
   'activesupport:>=2.5.0' \
   'public_suffix:<3.0.0' \
   'fluent-plugin-record-modifier:<1.0.0' \
