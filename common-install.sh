@@ -27,6 +27,8 @@ gem install -N --conservative --minimal-deps --no-document \
   'fluent-plugin-remote_syslog:<1.0.0' \
   fluent-plugin-splunk-hec
 
+gem uninstall fluentd -v 1.8.1
+
 # set up directores so that group 0 can have access like specified in
 # https://docs.openshift.com/container-platform/3.7/creating_images/guidelines.html
 # https://docs.openshift.com/container-platform/3.7/creating_images/guidelines.html#openshift-specific-guidelines
