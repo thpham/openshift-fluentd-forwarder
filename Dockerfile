@@ -7,7 +7,7 @@ ENV HOME=/opt/app-root/src \
   MANPATH=/opt/rh/rh-ruby24/root/usr/share/man:$MANPATH \
   PKG_CONFIG_PATH=/opt/rh/rh-ruby24/root/usr/lib64/pkgconfig${PKG_CONFIG_PATH:+:${PKG_CONFIG_PATH}} \
   XDG_DATA_DIRS=/opt/rh/rh-ruby24/root/usr/share${XDG_DATA_DIRS:+:${XDG_DATA_DIRS}} \
-  RUBY_VERSION=2.4 \
+  RUBY_VERSION=2.5 \
   FLUENTD_VERSION=0.12.32 \
   GEM_HOME=/opt/app-root/src \
   DATA_VERSION=1.6.0 \
@@ -35,7 +35,7 @@ RUN yum install -y yum-utils && \
     yum install -y $YUM_OPTS $INSTALL_PKGS && rpm -V $INSTALL_PKGS
 
 
-RUN INSTALL_RUBY="nss_wrapper rh-ruby24 rh-ruby24-ruby-devel rh-ruby24-rubygem-rake rh-ruby24-rubygem-bundler" && \
+RUN INSTALL_RUBY="nss_wrapper rh-ruby25 rh-ruby24-ruby-devel rh-ruby25-rubygem-rake rh-ruby25-rubygem-bundler" && \
     YUM_OPTS="--setopt=tsflags=nodocs --enablerepo=rhel-7-server-rpms --enablerepo=rhel-server-rhscl-7-rpms --enablerepo=rhel-7-server-optional-rpms" && \
     yum install -y $YUM_OPTS $INSTALL_RUBY && rpm -V $INSTALL_RUBY && \
     yum -y clean all --enablerepo='*'
