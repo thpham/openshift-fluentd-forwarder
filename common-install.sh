@@ -17,7 +17,7 @@ mkdir -p ${HOME} && \
 # into openshift
 gem install -N --conservative --minimal-deps --no-document \
   fluentd \
-  'activesupport:<5' \
+  'activesupport:>=2.5.0' \
   'public_suffix:<3.0.0' \
   'fluent-plugin-record-modifier:<1.0.0' \
   'fluent-plugin-rewrite-tag-filter' \
