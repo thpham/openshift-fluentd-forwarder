@@ -10,10 +10,10 @@ YUM_ARGS="--setopt=tsflags=nodocs"
 # - iproute needed for ip command to get ip addresses	+ADD run.sh fluentd.conf.template passwd.template fluentd-check.sh ${HOME}/
 # - nss_wrapper used to support username identity	+ADD common-*.sh /tmp/
 # - bc for calculations in run.conf
-PACKAGES="gem gcc gcc-c++ libcurl-devel make bc gettext nss_wrapper hostname iproute"
+#PACKAGES="gem gcc gcc-c++ libcurl-devel make bc gettext nss_wrapper hostname iproute"
 
 # ruby packages
-PACKAGES="${PACKAGES} rh-ruby24 rh-ruby24-ruby-devel rh-ruby24-rubygem-rake rh-ruby24-rubygem-bundler"
+#PACKAGES="${PACKAGES} rh-ruby24 rh-ruby24-ruby-devel rh-ruby24-rubygem-rake rh-ruby24-rubygem-bundler"
 
 # if the release is a red hat version then we need to set additional arguments for yum repositories
 RED_HAT_MATCH='^Red Hat.*$'
@@ -34,10 +34,10 @@ if [[ $RELEASE =~ $CENTOS_MATCH && -z "$USE_SYSTEM_REPOS" ]]; then
 fi
 
 # ensure latest versions
-yum update $YUM_ARGS -y
+#yum update $YUM_ARGS -y
 
 # install all required packages
-yum install -y $YUM_ARGS $PACKAGES
+#yum install -y $YUM_ARGS $PACKAGES
 
 # clean up yum to make sure image isn't larger because of installations/updates
 yum clean all
