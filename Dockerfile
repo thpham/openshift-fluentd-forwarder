@@ -2,7 +2,7 @@
 FROM rhel7
 
 ENV HOME=/opt/app-root/src \
-  PATH=/opt/rh/rh-ruby25/root/usr/bin:/opt/app-root/src/bin:/opt/app-root/bin${PATH:+:${PATH}} \
+  PATH=/opt/rh/rh-ruby25/root/usr/local/bin:/opt/rh/rh-ruby25/root/usr/bin:/opt/app-root/src/bin:/opt/app-root/bin${PATH:+:${PATH}} \
   LD_LIBRARY_PATH=/opt/rh/rh-ruby25/root/usr/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}} \
   MANPATH=/opt/rh/rh-ruby25/root/usr/share/man:$MANPATH \
   PKG_CONFIG_PATH=/opt/rh/rh-ruby25/root/usr/lib64/pkgconfig${PKG_CONFIG_PATH:+:${PKG_CONFIG_PATH}} \
