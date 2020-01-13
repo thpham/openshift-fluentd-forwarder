@@ -30,7 +30,7 @@ LABEL io.k8s.description="Fluentd container for collecting logs from other fluen
   architecture=x86_64
 
 RUN yum install -y yum-utils && \
-    yum-config-manager --enable=rhel-7-server-rpms --enable=rhel-server-rhscl-7-rpms --enable=rhel-7-server-optional-rpms && \
+    YUM_OPTS="--setopt=tsflags=nodocs --enablerepo=rhel-7-server-rpms --enablerepo=rhel-server-rhscl-7-rpms --enablerepo=rhel-7-server-optional-rpms" &&\
     INSTALL_PKGS="gcc gcc-c++ libcurl-devel make bc gettext nss_wrapper hostname iproute rh-ruby24 rh-ruby24-ruby-devel rh-ruby24-rubygem-rake rh-ruby24-rubygem-bundler" && \
     yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && rpm -V $INSTALL_PKGS && \
     yum -y clean all --enablerepo='*'
