@@ -29,6 +29,12 @@ LABEL io.k8s.description="Fluentd container for collecting logs from other fluen
   name="fluentd-forwarder" \
   architecture=x86_64
 
+RUN yum install -y yum-utils && \
+    prepare-yum-repositories rhel-server-rhscl-7-rpms && \
+    INSTALL_PKGS="gcc gcc-c++ libcurl-devel make bc gettext nss_wrapper hostname iproute rh-ruby24 rh-ruby24-ruby-devel rh-ruby24-rubygem-rake rh-ruby24-rubygem-bundler" && \
+    yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && rpm -V $INSTALL_PKGS && \
+    yum -y clean all --enablerepo='*'
+
 # add files
 ADD run.sh fluentd.conf.template passwd.template fluentd-check.sh ${HOME}/
 ADD common-*.sh /tmp/
