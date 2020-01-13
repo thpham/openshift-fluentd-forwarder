@@ -22,7 +22,11 @@ if [[ $RELEASE =~ $RED_HAT_MATCH && -z "$USE_SYSTEM_REPOS" ]]; then
   #This command will force the population of said file, see #https://access.redhat.com/solutions/1443553
   yum repolist --disablerepo=* && yum-config-manager --disable \* > /dev/null
   #Set YUM_ARGS
-  YUM_ARGS="${YUM_ARGS} --enablerepo=rhel-7-server-rpms --enablerepo=rhel-server-rhscl-7-rpms --enablerepo=rhel-7-server-optional-rpms"
+  if [[ $RELEASE =~ '.*Workstation.*$' ]]; then
+    YUM_ARGS="${YUM_ARGS} --enablerepo=rhel-7-workstation-rpms --enablerepo=rhel-workstation-rhscl-7-rpms --enablerepo=rhel-7-workstation-optional-rpms"
+  else
+    YUM_ARGS="${YUM_ARGS} --enablerepo=rhel-7-server-rpms --enablerepo=rhel-server-rhscl-7-rpms --enablerepo=rhel-7-server-optional-rpms"
+  fi
 fi
 
 # enable epel when on CentOS
