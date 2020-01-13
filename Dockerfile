@@ -37,7 +37,7 @@ RUN yum install -y yum-utils && \
 
 RUN INSTALL_RUBY="nss_wrapper rh-ruby24 rh-ruby24-ruby-devel rh-ruby24-rubygem-rake rh-ruby24-rubygem-bundler" && \
     YUM_OPTS="--setopt=tsflags=nodocs --enablerepo=rhel-7-server-rpms --enablerepo=rhel-server-rhscl-7-rpms --enablerepo=rhel-7-server-optional-rpms" && \
-    yum install -y $YUM_OPTS $INSTALL_RUBY && rpm -V $INSTALL_PKGS && \
+    yum install -y $YUM_OPTS $INSTALL_RUBY && rpm -V $INSTALL_RUBY && \
     yum -y clean all --enablerepo='*'
 
 # add files
