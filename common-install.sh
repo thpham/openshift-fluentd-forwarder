@@ -13,7 +13,7 @@ YUM_ARGS="--setopt=tsflags=nodocs"
 PACKAGES="gem gcc gcc-c++ libcurl-devel make bc gettext nss_wrapper hostname iproute"
 
 # ruby packages
-PACKAGES="${PACKAGES} rh-ruby24 rh-ruby24-rubygems rh-ruby24-ruby-devel ruby-devel"
+PACKAGES="${PACKAGES} rh-ruby24 rh-ruby24-ruby-devel rh-ruby24-rubygem-rake rh-ruby24-rubygem-bundler"
 
 # if the release is a red hat version then we need to set additional arguments for yum repositories
 RED_HAT_MATCH='^Red Hat.*$'
@@ -50,11 +50,11 @@ mkdir -p ${HOME} && \
 # update to fluentd version that matches version deployed
 # into openshift
 gem install -N --conservative --minimal-deps --no-document \
-  fluentd:${FLUENTD_VERSION} \
+  fluentd \
   'activesupport:<5' \
   'public_suffix:<3.0.0' \
   'fluent-plugin-record-modifier:<1.0.0' \
-  'fluent-plugin-rewrite-tag-filter:<2.0.0' \
+  'fluent-plugin-rewrite-tag-filter' \
   fluent-plugin-kubernetes_metadata_filter \
   fluent-plugin-rewrite-tag-filter \
   fluent-plugin-secure-forward \
