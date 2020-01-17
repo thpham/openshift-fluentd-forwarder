@@ -40,6 +40,11 @@ RUN INSTALL_RUBY="nss_wrapper rh-ruby25 rh-ruby25-ruby-devel rh-ruby25-rubygem-r
     yum install -y $YUM_OPTS $INSTALL_RUBY && rpm -V $INSTALL_RUBY && \
     yum -y clean all --enablerepo='*'
 
+RUN INSTALL_DEBUG="openssl" && \
+    YUM_OPTS="--setopt=tsflags=nodocs --enablerepo=rhel-7-server-rpms --enablerepo=rhel-server-rhscl-7-rpms --enablerepo=rhel-7-server-optional-rpms" && \
+    yum install -y $YUM_OPTS $INSTALL_DEBUG && rpm -V $INSTALL_DEBUG && \
+    yum -y clean all --enablerepo='*'
+
 # add files
 ADD run.sh fluentd.conf.template passwd.template fluentd-check.sh ${HOME}/
 ADD common-*.sh /tmp/
