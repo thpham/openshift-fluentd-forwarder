@@ -101,20 +101,20 @@ oc apply -f fluentd-forwarder-build-config-template.yaml
 
 For CentOS use the -centos template.
 ```bash
-oc project logging
-oc apply -f fluentd-forwarder-centos-build-config-template.yaml
+oc-3.7 project logging
+oc-3.7 apply -f fluentd-forwarder-centos-build-config-template.yaml
 ```
 
 Process the template to create a build, using any relevant variables. In the general case the defaults are fine.
 ```bash
 oc project logging
-oc process fluentd-forwarder | oc apply -f -
+oc process fluentd-forwarder-build | oc apply -f -
 ```
 
 For CentOS process the -centos template.
 ```bash
-oc project logging
-oc process fluentd-forwarder-centos | oc apply -f -
+oc-3.7 project logging
+oc-3.7 process fluentd-forwarder-centos-build | oc-3.7 apply -f -
 ```
 
 By default the build will disable all repositories in the base image, enabling only the ones required for installing the required packages. If you want to use the build process to use the existing repository config as is (e.g. if you're using a custom base image) then set the `USE_SYSTEM_REPOS` environment variable to any value in the BuildConfig object.
@@ -125,28 +125,28 @@ oc set env bc/fluentd-forwarder USE_SYSTEM_REPOS=1
 
 On CentOS:
 ```
-oc project logging
-oc set env bc/fluentd-forwarder-centos USE_SYSTEM_REPOS=1
+oc-3.7 project logging
+oc-3.7 set env bc/fluentd-forwarder-centos USE_SYSTEM_REPOS=1
 ```
 
 Build the fluentd-forwarder
 ```bash
 oc project logging
-oc start-build fluentd-forwarder-build
+oc start-build fluentd-forwarder --follow=true
 ```
 
 To build with CentOS use the -centos build configuration.
 ```bash
-oc project logging
-oc start-build fluentd-forwarder-centos-build
+oc-3.7 project logging
+oc-3.7 start-build fluentd-forwarder-centos --follow=true
 ```
 
 ### Create Fluentd Forwarder
 
 Add the template to the logging namespace:
 ```bash
-oc project logging
-oc apply -f fluentd-forwarder-template.yaml
+oc-3.7 project logging
+oc-3.7 apply -f fluentd-forwarder-template.yaml
 ```
 
 #### RHEL
